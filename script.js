@@ -38,22 +38,37 @@ const gameHands = [...PLAYER, ...CPU1, ...CPU2, ...CPU3];
 const highestDouble = getHighestDouble(gameHands);
 
 const startingPlayer = () => {
-  if (highestDouble > 21) return "CPU3";
-  if (highestDouble > 14) return "CPU2";
-  if (highestDouble > 7) return "CPU1";
+  if (highestDouble.index > 21) return "CPU3";
+  if (highestDouble.index > 14) return "CPU2";
+  if (highestDouble.index > 7) return "CPU1";
   return "PLAYER";
 };
 
+let TURNS = [];
 
-/* LOGICA PARA GENERAR LOS DOMINOES */
+const gameTurs = (srtring) => {
+  if (srtring === "PLAYER") {
+    TURNS = ["PLAYER", "CPU1", "CPU2", "CPU3"];
+  } else if (srtring === "CPU1") {
+    TURNS = ["CPU1", "CPU2", "CPU3", "PLAYER"];
+  } else if (srtring === "CPU2") {
+    TURNS = ["CPU2", "CPU3", "PLAYER", "CPU1"];
+  } else if (srtring === "CPU3") {
+    TURNS = ["CPU3", "PLAYER", "CPU1", "CPU2"];
+  }
+};
+
+gameTurs(startingPlayer());
+
 const renderPlayerDominos = () => {
   PLAYER.forEach((dominoe) => {
     const DOMINOE_TOKEN = document.createElement("div");
     DOMINOE_TOKEN.className = "dominoe_token";
     for (let value in dominoe) {
-      const number1 = document.createElement("p");
-      number1.innerText = dominoe[value];
-      DOMINOE_TOKEN.appendChild(number1);
+      const number = document.createElement("p");
+      number.className = `number${dominoe[value]}`;
+      number.innerText = dominoe[value];
+      DOMINOE_TOKEN.appendChild(number);
     }
     PLAYER_HAND.appendChild(DOMINOE_TOKEN);
   });
