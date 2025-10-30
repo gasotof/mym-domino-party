@@ -1,3 +1,5 @@
+const PLAYER_HAND = document.querySelector(".PLAYER_HAND");
+
 const getDominoes = (leftNumber = 0, rightNumber = 0, pieces = []) => {
   if (leftNumber > 6) return pieces;
   if (rightNumber > 6)
@@ -42,3 +44,18 @@ const startingPlayer = () => {
   return "PLAYER";
 };
 
+
+/* LOGICA PARA GENERAR LOS DOMINOES */
+const renderPlayerDominos = () => {
+  PLAYER.forEach((dominoe) => {
+    const DOMINOE_TOKEN = document.createElement("div");
+    DOMINOE_TOKEN.className = "dominoe_token";
+    for (let value in dominoe) {
+      const number1 = document.createElement("p");
+      number1.innerText = dominoe[value];
+      DOMINOE_TOKEN.appendChild(number1);
+    }
+    PLAYER_HAND.appendChild(DOMINOE_TOKEN);
+  });
+};
+renderPlayerDominos();
