@@ -29,9 +29,9 @@ const getHighestDouble = (hand) => {
 const highestDouble = getHighestDouble(gameHands)
 
 const startingPlayer = () => {
-  if (highestDouble > 21) return "CPU3";
-  if (highestDouble > 14) return "CPU2";
-  if (highestDouble > 7) return "CPU1";
+  if (highestDouble.index > 21) return "CPU3";
+  if (highestDouble.index > 14) return "CPU2";
+  if (highestDouble.index > 7) return "CPU1";
   return "PLAYER";
 };
 
