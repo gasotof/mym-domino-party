@@ -1,4 +1,8 @@
 const PLAYER_HAND = document.querySelector(".PLAYER");
+const CPU2_HAND = document.querySelector(".CPU2");
+
+const CPU1_HAND = document.querySelector(".CPU1");
+const CPU3_HAND = document.querySelector(".CPU3");
 
 const getDominoes = (leftNumber = 0, rightNumber = 0, pieces = []) => {
   if (leftNumber > 6) return pieces;
@@ -60,18 +64,23 @@ const gameTurns = (starting) => {
 
 gameTurns(startingPlayer());
 
-const renderDomino = (player, side) => {
+const renderDomino = (player, side, prefix) => {
   player.forEach((domino) => {
     const dominoContainer = document.createElement("div");
-    dominoContainer.className = "domino_container";
+    dominoContainer.className = `domino_container_${prefix}`;
 
     for (let cara in domino) {
       const caraContainer = document.createElement("div");
+      caraContainer.className = `number_${domino[cara]}`;
       caraContainer.innerText = domino[cara];
       dominoContainer.appendChild(caraContainer);
     }
+
     side.appendChild(dominoContainer);
   });
 };
 
-renderDomino(PLAYER, PLAYER_HAND);
+renderDomino(PLAYER, PLAYER_HAND, "PLAYER");
+renderDomino(CPU2, CPU2_HAND, "CPU2");
+renderDomino(CPU1, CPU1_HAND, "CPU1");
+renderDomino(CPU3, CPU3_HAND, "CPU3");
