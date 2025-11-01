@@ -1,4 +1,8 @@
-const PLAYER_HAND = document.querySelector(".PLAYER_HAND");
+const PLAYER_HAND = document.querySelector(".PLAYER");
+const CPU2_HAND = document.querySelector(".CPU2");
+
+const CPU1_HAND = document.querySelector(".CPU1");
+const CPU3_HAND = document.querySelector(".CPU3");
 
 const getDominoes = (leftNumber = 0, rightNumber = 0, pieces = []) => {
   if (leftNumber > 6) return pieces;
@@ -46,31 +50,37 @@ const startingPlayer = () => {
 
 let TURNS = [];
 
-const gameTurs = (srtring) => {
-  if (srtring === "PLAYER") {
+const gameTurns = (starting) => {
+  if (starting === "PLAYER") {
     TURNS = ["PLAYER", "CPU1", "CPU2", "CPU3"];
-  } else if (srtring === "CPU1") {
+  } else if (starting === "CPU1") {
     TURNS = ["CPU1", "CPU2", "CPU3", "PLAYER"];
-  } else if (srtring === "CPU2") {
+  } else if (starting === "CPU2") {
     TURNS = ["CPU2", "CPU3", "PLAYER", "CPU1"];
-  } else if (srtring === "CPU3") {
+  } else if (starting === "CPU3") {
     TURNS = ["CPU3", "PLAYER", "CPU1", "CPU2"];
   }
 };
 
-gameTurs(startingPlayer());
+gameTurns(startingPlayer());
 
-const renderPlayerDominos = () => {
-  PLAYER.forEach((dominoe) => {
-    const DOMINOE_TOKEN = document.createElement("div");
-    DOMINOE_TOKEN.className = "dominoe_token";
-    for (let value in dominoe) {
-      const number = document.createElement("p");
-      number.className = `number${dominoe[value]}`;
-      number.innerText = dominoe[value];
-      DOMINOE_TOKEN.appendChild(number);
+const renderDomino = (player, side, prefix) => {
+  player.forEach((domino) => {
+    const dominoContainer = document.createElement("div");
+    dominoContainer.className = `domino_container_${prefix}`;
+
+    for (let cara in domino) {
+      const caraContainer = document.createElement("div");
+      caraContainer.className = `number_${domino[cara]}`;
+      caraContainer.innerText = domino[cara];
+      dominoContainer.appendChild(caraContainer);
     }
-    PLAYER_HAND.appendChild(DOMINOE_TOKEN);
+
+    side.appendChild(dominoContainer);
   });
 };
-renderPlayerDominos();
+
+renderDomino(PLAYER, PLAYER_HAND, "PLAYER");
+renderDomino(CPU2, CPU2_HAND, "CPU2");
+renderDomino(CPU1, CPU1_HAND, "CPU1");
+renderDomino(CPU3, CPU3_HAND, "CPU3");
