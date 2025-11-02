@@ -117,7 +117,6 @@
   display: grid;
   grid-template-columns: repeat(3, 10px);
   grid-template-rows: repeat(3, 10px);
-
 }
 
 .dot {
@@ -227,6 +226,11 @@
   }
 }
 
+.bounce-in {
+  animation: bounceIn 0.6s ease-out forwards;
+  animation-fill-mode: none;
+}
+
 .domino_container_PLAYER > :first-child,
 .domino_container_CPU2 > :first-child {
   border-bottom: 2px solid black;
@@ -243,11 +247,36 @@
 
 .header {
   background-image: url(./assets/M&Ms.jpg);
-  border: 6px solid black;
   height: 15vh;
   width: 100vw;
   position: relative;
-  box-shadow: -5px 2px 50px 0px #f0ff66;
+  box-shadow: 0px 0px 50px 3px #f0ff66ca;
+}
+
+.start_button {
+  margin-left: 30px;
+}
+
+.header > div:last-child {
+  position: absolute;
+  right: 3rem;
+}
+
+.about_us {
+  color: white;
+  font-size: 1.25rem;
+  cursor: pointer;
+  text-shadow: 4px 4px 4px black;
+}
+
+.domino_container_PLAYER:hover,
+.domino_container_CPU1:hover,
+.domino_container_CPU2:hover,
+.domino_container_CPU3:hover {
+  transform: translateY(0) scale(1.2);
+  transition: transform 0.2s;
+  z-index: 10;
+  box-shadow: 0px 0px 20px 5px #73cac3;
 }
 
 .glow {
@@ -257,6 +286,8 @@
   -webkit-animation: glow 1s ease-in-out infinite alternate;
   animation: glow 1s ease-in-out infinite alternate;
 }
+
+/*---------------- KEY FRAMES ---------------- */
 
 @-webkit-keyframes glow {
   from {
@@ -280,28 +311,19 @@
   }
 }
 
-.start_button {
-  margin-left: 30px;
-}
-
-.header > div:last-child {
-  position: absolute;
-  right: 3rem;
-}
-
-.about_us {
-  color: white;
-  font-size: 1.25rem;
-  cursor: pointer;
-  text-shadow: 4px 4px 4px black;
-}
-
-.domino_container_PLAYER:hover,
-.domino_container_CPU1:hover,
-.domino_container_CPU2:hover,
-.domino_container_CPU3:hover {
-  transform: scale(1.2);
-  transition: transform 0.2s;
-  z-index: 10;
-  box-shadow: 0px 0px 20px 5px #73cac3;
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-15px);
+  }
+  70% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
 }
