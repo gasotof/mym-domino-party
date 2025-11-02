@@ -64,6 +64,14 @@ const gameTurns = (starting) => {
 
 gameTurns(startingPlayer());
 
+const generateDots = (number) => {
+  if (number === 0) return "";
+  let dots = "";
+  for (let i = 0; i < number; i++) {
+    dots += `<div class='dot dot_${i}'></div>`;
+  }
+  return dots;
+};
 const renderDomino = (player, side, prefix) => {
   player.forEach((domino) => {
     const dominoContainer = document.createElement("div");
@@ -71,8 +79,8 @@ const renderDomino = (player, side, prefix) => {
 
     for (let cara in domino) {
       const caraContainer = document.createElement("div");
-      caraContainer.className = `number_${domino[cara]}`;
-      caraContainer.innerText = domino[cara];
+      caraContainer.className = `face number_${domino[cara]}`;
+      caraContainer.innerHTML = generateDots(domino[cara]);
       dominoContainer.appendChild(caraContainer);
     }
 
