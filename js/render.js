@@ -1,8 +1,17 @@
+const colorVars = [
+  "--red_MM",
+  "--yellow_MM",
+  "--blue_MM",
+  "--green_MM",
+  "--orange_MM",
+  "--pink_MM"
+];
+
 const generateDots = (number) => {
   if (number === 0) return "";
   let dots = "";
   for (let i = 0; i < number; i++) {
-    dots += `<div class='dot dot_${i}'></div>`;
+    dots += `<div class='dot dot_${i}' style="--level: var(${colorVars[i]}">m</div>`;
   }
   return dots;
 };
@@ -27,7 +36,7 @@ const renderDomino = (player, side, prefix) => {
 
     setTimeout(() => {
       dominoContainer.classList.add("bounce-in");
-    }, 100 * index); // cada ficha entra un poco después de la anterior
+    }, 100 * index);
   });
 };
 
