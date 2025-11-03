@@ -1,0 +1,15 @@
+.candy-btn{
+inline-flex 
+items-center 
+gap-2
+px-4 py-2
+rounded-full
+bg-white text-neutral-900 border-2 border-neutral-900
+shadow-[0_3px_0_#111]
+hover:translate-y-[-1px] hover:shadow-[0_4px_0_#111]
+active:translate-y-[2px] active:shadow-none
+transition
+}
+
+@import "tailwindcss";
+@source "../node_modules/@acmecorp/ui-lib";

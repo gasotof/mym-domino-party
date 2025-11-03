@@ -1,0 +1,12 @@
+:root {
+--mm-bg:#f5f0ff;
+--mm-dot1:#e63946; --mm-dot2:#457b9d; --mm-dot3:#38b000; --mm-dot4:#ffb703;
+--tile-bg:#fff; --tile-border:#222;
+}
+
+* { box-sizing: border-box;}
+body{ font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0; padding: 25px; background:#f7f7f7; color:#222; ;
+.page-header{ text-align: center; margin-bottom: 25px;}
+.container { max-width: 1100px; margin-inline:auto ;}
+}
+
