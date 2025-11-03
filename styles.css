@@ -16,6 +16,12 @@
     rgba(22, 64, 73, 1) 18%,
     rgba(11, 32, 38, 1) 70%
   );
+  --red_MM: #e74c3c;
+  --yellow_MM: #f1c40f;
+  --blue_MM: #3498db;
+  --green_MM: #2ecc71;
+  --orange_MM: #e67e22;
+  --pink_MM: #ff69b4;
 }
 
 .main_container {
@@ -120,12 +126,17 @@
 }
 
 .dot {
-  width: 7px;
-  height: 7px;
-  background: black;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
-  margin: 3px;
+  font-size: 6px;
+  text-align: center;
   place-self: center;
+  border: 1px solid black;
+  background-color: var(--level);
 }
 
 .number_1 .dot_0 {
