@@ -4,9 +4,5 @@
 --tile-bg:#fff; --tile-border:#222;
 }
 
-* { box-sizing: border-box;}
-body{ font-family: system-ui, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif; margin: 0; padding: 25px; background:#f7f7f7; color:#222; ;
-.page-header{ text-align: center; margin-bottom: 25px;}
-.container { max-width: 1100px; margin-inline:auto ;}
-}
+
 
