@@ -1,5 +1,4 @@
-import { getDominoes } from "./utils.js";
-import { getShuffle } from "./utils.js";
+import { getDominoes, getShuffle } from "./utils.js";
 import expect from "expect";
 
 describe("getDominoes function", () => {
@@ -28,6 +27,19 @@ describe("getDominoes function", () => {
     result.forEach(({ cara1, cara2 }) => {
       expect(cara1).toBeLessThanOrEqual(cara2);
     });
+  });
+});
+
+describe("getShuffle function", () => {
+  test("the last dominoes shuoldn't be {cara1:6, cara2:6}", () => {
+    const result = getShuffle(getDominoes());
+    expect(result[result.length - 1]).not.toEqual({ cara1: 6, cara2: 6 });
+  });
+
+  test("should change the order of elements for a large array", () => {
+    const originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    const shuffledArray = getShuffle(originalArray);
+    expect(shuffledArray.sort()).toEqual(originalArray.sort());
   });
 });
 
