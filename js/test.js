@@ -42,3 +42,23 @@ describe("getShuffle function", () => {
     expect(shuffledArray.sort()).toEqual(originalArray.sort());
   });
 });
+
+describe("getShuffle", () => {
+  const originalArray = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  let shuffledArray;
+
+  beforeEach(() => {
+    shuffledArray = getShuffle(originalArray);
+  });
+
+  it("should return an array of the same length", () => {
+    expect(shuffledArray.length).toBe(originalArray.length);
+  });
+
+  it("should contain all the same elements as the original", () => {
+    const sortedOriginal = [...originalArray].sort();
+    const sortedShuffled = [...shuffledArray].sort();
+
+    expect(sortedShuffled).toEqual(sortedOriginal);
+  });
+});
